@@ -1,0 +1,24 @@
+From: Manuel Fischer <58823087+manuel-fischer@users.noreply.github.com>
+Date: Mon, 21 Feb 2022 08:46:26 +0100
+Subject: Small Bugfix: Possible Buffer Overflow (#180)
+
+- If the allocation fails, the next time the function is called with the same string, it seems that the buffer size is enough. A buffer overflow occurs.
+
+Bug: https://github.com/libsdl-org/SDL_ttf/issues/180
+Origin: upstream, 2.19.0, commit:8368ea92c8bb86d65dd28ba10eeeeecefbd7d214
+---
+ SDL_ttf.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/SDL_ttf.c b/SDL_ttf.c
+index a360dea..91f1628 100644
+--- a/SDL_ttf.c
++++ b/SDL_ttf.c
+@@ -2970,6 +2970,7 @@ static int TTF_Size_Internal(TTF_Font *font,
+             font->pos_max *= 2;
+             font->pos_buf = (PosBuf_t *)SDL_realloc(font->pos_buf, font->pos_max * sizeof (font->pos_buf[0]));
+             if (font->pos_buf == NULL) {
++                font->pos_max /= 2;
+                 font->pos_buf = saved;
+                 TTF_SetError("Out of memory");
+                 goto failure;

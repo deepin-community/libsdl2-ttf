@@ -1,0 +1,42 @@
+Source: libsdl2-ttf
+Section: libs
+Priority: optional
+Maintainer: Debian SDL packages maintainers <pkg-sdl-maintainers@lists.alioth.debian.org>
+Uploaders: Manuel A. Fernandez Montecelo <mafm@debian.org>
+Standards-Version: 4.6.0
+Rules-Requires-Root: no
+Build-Depends: debhelper-compat (= 13),
+               libfreetype-dev,
+               libharfbuzz-dev (>= 2.3.1),
+               libsdl2-dev (>= 2.0.12),
+               pkg-config
+Homepage: https://www.libsdl.org/projects/SDL_ttf/
+Vcs-Browser: https://salsa.debian.org/sdl-team/libsdl2-ttf
+Vcs-Git: https://salsa.debian.org/sdl-team/libsdl2-ttf.git
+
+
+Package: libsdl2-ttf-2.0-0
+Architecture: any
+Multi-Arch: same
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${shlibs:Depends},
+         ${misc:Depends}
+Description: TrueType Font library for Simple DirectMedia Layer 2, libraries
+ Wrapper around FreeType 2.0 library, making possible to use TrueType fonts to
+ render text in SDL applications.
+ .
+ This package contains the shared library.
+
+Package: libsdl2-ttf-dev
+Section: libdevel
+Architecture: any
+Multi-Arch: same
+Depends: ${misc:Depends},
+         libc6-dev,
+         libsdl2-ttf-2.0-0 (= ${binary:Version}),
+         libsdl2-dev (>= 2.0.0)
+Description: TrueType Font library for Simple DirectMedia Layer 2, development files
+ Wrapper around FreeType 2.0 library, making possible to use TrueType fonts to
+ render text in SDL applications.
+ .
+ This package contains the development files.
