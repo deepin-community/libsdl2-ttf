@@ -1,4 +1,5 @@
-usr/include
-usr/lib/*/lib*.a
-usr/lib/*/lib*.so
-usr/lib/*/pkgconfig
+usr/include/SDL2/SDL_ttf.h
+usr/lib/*/cmake/SDL2_ttf
+usr/lib/*/libSDL2_ttf.a
+usr/lib/*/libSDL2_ttf.so
+usr/lib/*/pkgconfig/SDL2_ttf.pc
