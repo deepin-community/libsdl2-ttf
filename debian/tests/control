@@ -2,9 +2,11 @@ Tests: libsdl2-ttf-dev
 Restrictions: allow-stderr, superficial
 Depends:
  build-essential,
+ cmake,
  file,
  fonts-cantarell,
  libsdl2-ttf-dev,
+ ninja-build,
  pkg-config,
  xauth,
  xvfb,
