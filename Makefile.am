@@ -12,7 +12,7 @@ libSDL2_ttf_la_SOURCES =		\
 
 libSDL2_ttf_la_CPPFLAGS = $(TTF_CFLAGS) $(LOCAL_FT2_FLAGS) $(LOCAL_HB_FLAGS)
 
-FREETYPE_PATH = external/freetype-2.10.4
+FREETYPE_PATH = external/freetype
 FREETYPE_SOURCES = \
 	$(FREETYPE_PATH)/src/autofit/autofit.c \
 	$(FREETYPE_PATH)/src/base/ftbase.c \
@@ -48,8 +48,10 @@ FREETYPE_SOURCES = \
 	$(FREETYPE_PATH)/src/pshinter/pshinter.c \
 	$(FREETYPE_PATH)/src/psnames/psmodule.c \
 	$(FREETYPE_PATH)/src/raster/raster.c \
+	$(FREETYPE_PATH)/src/sdf/sdf.c \
 	$(FREETYPE_PATH)/src/sfnt/sfnt.c \
 	$(FREETYPE_PATH)/src/smooth/smooth.c \
+	$(FREETYPE_PATH)/src/svg/svg.c \
 	$(FREETYPE_PATH)/src/truetype/truetype.c \
 	$(FREETYPE_PATH)/src/type1/type1.c \
 	$(FREETYPE_PATH)/src/type42/type42.c \
@@ -60,14 +62,16 @@ LOCAL_FT2_FLAGS = -I$(srcdir)/$(FREETYPE_PATH)/include -DFT2_BUILD_LIBRARY -DFT_
 LOCAL_FT2_SOURCES = $(FREETYPE_SOURCES)
 endif
 
-HARFBUZZ_PATH = external/harfbuzz-2.8.0
+HARFBUZZ_PATH = external/harfbuzz
 HARFBUZZ_SOURCES = \
 	$(HARFBUZZ_PATH)/src/hb-aat-layout.cc \
 	$(HARFBUZZ_PATH)/src/hb-aat-map.cc \
 	$(HARFBUZZ_PATH)/src/hb-blob.cc \
 	$(HARFBUZZ_PATH)/src/hb-buffer-serialize.cc \
+	$(HARFBUZZ_PATH)/src/hb-buffer-verify.cc \
 	$(HARFBUZZ_PATH)/src/hb-buffer.cc \
 	$(HARFBUZZ_PATH)/src/hb-common.cc \
+	$(HARFBUZZ_PATH)/src/hb-draw.cc \
 	$(HARFBUZZ_PATH)/src/hb-face.cc \
 	$(HARFBUZZ_PATH)/src/hb-fallback-shape.cc \
 	$(HARFBUZZ_PATH)/src/hb-font.cc \
@@ -75,29 +79,33 @@ HARFBUZZ_SOURCES = \
 	$(HARFBUZZ_PATH)/src/hb-number.cc \
 	$(HARFBUZZ_PATH)/src/hb-ot-cff1-table.cc \
 	$(HARFBUZZ_PATH)/src/hb-ot-cff2-table.cc \
+	$(HARFBUZZ_PATH)/src/hb-ot-color.cc \
 	$(HARFBUZZ_PATH)/src/hb-ot-face.cc \
 	$(HARFBUZZ_PATH)/src/hb-ot-font.cc \
 	$(HARFBUZZ_PATH)/src/hb-ot-layout.cc \
 	$(HARFBUZZ_PATH)/src/hb-ot-map.cc \
 	$(HARFBUZZ_PATH)/src/hb-ot-math.cc \
 	$(HARFBUZZ_PATH)/src/hb-ot-metrics.cc \
-	$(HARFBUZZ_PATH)/src/hb-ot-shape-complex-arabic.cc \
-	$(HARFBUZZ_PATH)/src/hb-ot-shape-complex-default.cc \
-	$(HARFBUZZ_PATH)/src/hb-ot-shape-complex-hangul.cc \
-	$(HARFBUZZ_PATH)/src/hb-ot-shape-complex-hebrew.cc \
-	$(HARFBUZZ_PATH)/src/hb-ot-shape-complex-indic-table.cc \
-	$(HARFBUZZ_PATH)/src/hb-ot-shape-complex-indic.cc \
-	$(HARFBUZZ_PATH)/src/hb-ot-shape-complex-khmer.cc \
-	$(HARFBUZZ_PATH)/src/hb-ot-shape-complex-myanmar.cc \
-	$(HARFBUZZ_PATH)/src/hb-ot-shape-complex-syllabic.cc \
-	$(HARFBUZZ_PATH)/src/hb-ot-shape-complex-thai.cc \
-	$(HARFBUZZ_PATH)/src/hb-ot-shape-complex-use.cc \
-	$(HARFBUZZ_PATH)/src/hb-ot-shape-complex-vowel-constraints.cc \
+	$(HARFBUZZ_PATH)/src/hb-ot-shaper-arabic.cc \
+	$(HARFBUZZ_PATH)/src/hb-ot-shaper-default.cc \
+	$(HARFBUZZ_PATH)/src/hb-ot-shaper-hangul.cc \
+	$(HARFBUZZ_PATH)/src/hb-ot-shaper-hebrew.cc \
+	$(HARFBUZZ_PATH)/src/hb-ot-shaper-indic.cc \
+	$(HARFBUZZ_PATH)/src/hb-ot-shaper-indic-table.cc \
+	$(HARFBUZZ_PATH)/src/hb-ot-shaper-khmer.cc \
+	$(HARFBUZZ_PATH)/src/hb-ot-shaper-myanmar.cc \
+	$(HARFBUZZ_PATH)/src/hb-ot-shaper-syllabic.cc \
+	$(HARFBUZZ_PATH)/src/hb-ot-shaper-thai.cc \
+	$(HARFBUZZ_PATH)/src/hb-ot-shaper-use.cc \
+	$(HARFBUZZ_PATH)/src/hb-ot-shaper-vowel-constraints.cc \
+	$(HARFBUZZ_PATH)/src/hb-ot-shape.cc \
 	$(HARFBUZZ_PATH)/src/hb-ot-shape-fallback.cc \
 	$(HARFBUZZ_PATH)/src/hb-ot-shape-normalize.cc \
-	$(HARFBUZZ_PATH)/src/hb-ot-shape.cc \
 	$(HARFBUZZ_PATH)/src/hb-ot-tag.cc \
 	$(HARFBUZZ_PATH)/src/hb-ot-var.cc \
+	$(HARFBUZZ_PATH)/src/hb-outline.cc \
+	$(HARFBUZZ_PATH)/src/hb-paint.cc \
+	$(HARFBUZZ_PATH)/src/hb-paint-extents.cc \
 	$(HARFBUZZ_PATH)/src/hb-set.cc \
 	$(HARFBUZZ_PATH)/src/hb-shape-plan.cc \
 	$(HARFBUZZ_PATH)/src/hb-shape.cc \
@@ -113,7 +121,7 @@ if USE_BUILTIN_HARFBUZZ
 LOCAL_HB_FLAGS = -I$(srcdir)/$(HARFBUZZ_PATH) -I$(srcdir)/$(HARFBUZZ_PATH)/src -DHAVE_CONFIG_H -DFT_CONFIG_OPTION_USE_HARFBUZZ
 LOCAL_HB_SOURCES = $(HARFBUZZ_SOURCES)
 if OS_WIN32
-LINKER = $(CXXLINK)
+LINKER = $(LINK) #$(CXXLINK)
 else
 LINKER = $(LINK)
 endif
@@ -121,17 +129,12 @@ else
 LINKER = $(LINK)
 endif
 
-if USE_VERSION_RC
-libSDL2_ttf_la_LDFLAGS = 	\
-	-no-undefined		\
-	-release $(LT_RELEASE)	\
-	-version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) -Wl,version.o
-libSDL2_ttf_la_DEPENDENCIES = version.o
-else
 libSDL2_ttf_la_LDFLAGS = 	\
 	-no-undefined		\
 	-release $(LT_RELEASE)	\
 	-version-info $(LT_CURRENT):$(LT_REVISION):$(LT_AGE) $(LT_EXTRA)
+if USE_VERSION_RC
+libSDL2_ttf_la_DEPENDENCIES = version.o
 endif
 libSDL2_ttf_la_LINK = $(LINKER) $(libSDL2_ttf_la_LDFLAGS)
 libSDL2_ttf_la_LIBADD = $(TTF_LIBS) @MATHLIB@
@@ -139,22 +142,30 @@ libSDL2_ttf_la_LIBADD = $(TTF_LIBS) @MATHLIB@
 pkgconfigdir = $(libdir)/pkgconfig
 pkgconfig_DATA = SDL2_ttf.pc
 
-%.o : %.rc
-	$(WINDRES) $< $@
+.rc.o:
+	$(RC) $< $@
 
-EXTRA_DIST = CHANGES.txt COPYING.txt README.txt \
-	Android.mk		\
-	Makefile.os2		\
-	Xcode			\
-	VisualC			\
-	VisualC-WinRT		\
-	version.rc		\
-	debian			\
-	external		\
-	SDL2_ttf.spec		\
+EXTRA_DIST = 			\
+	.gitmodules		\
+	Android.mk 		\
+	CHANGES.txt 		\
+	CMakeLists.txt 		\
+	LICENSE.txt 		\
+	Makefile.os2 		\
+	README.txt 		\
+	SDL2_ttf.pc.in		\
 	SDL2_ttf.spec.in	\
-	SDL2_ttfConfig.cmake	\
-	autogen.sh gcc-fat.sh
+	SDL2_ttfConfig.cmake.in	\
+	VisualC 		\
+	VisualC-WinRT 		\
+	Xcode 			\
+	autogen.sh		\
+	cmake			\
+	external		\
+	mingw			\
+	sdl2_ttf-config-version.cmake.in \
+	sdl2_ttf-config.cmake.in \
+	version.rc
 
 noinst_PROGRAMS = showfont glfont
 
@@ -172,3 +183,17 @@ distclean-local:
 	-rm -rf `find $(srcdir) -name .deps`
 dist-hook:
 	-rm -rf `find $(distdir) -name .deps`
+	-rm -rf `find $(distdir)/external -name '.git*'`
+	-rm -rf `find $(distdir)/external -name '.ci*'`
+	-rm -rf `find $(distdir)/external -name .dirstamp`
+	-rm -rf $(distdir)/external/harfbuzz/test
+
+install-data-local:
+	$(MKDIR_P) $(DESTDIR)$(libdir)/cmake/SDL2_ttf
+	$(INSTALL) -m 644 sdl2_ttf-config.cmake $(DESTDIR)$(libdir)/cmake/SDL2_ttf
+	$(INSTALL) -m 644 sdl2_ttf-config-version.cmake $(DESTDIR)$(libdir)/cmake/SDL2_ttf
+
+uninstall-hook:
+	rm $(DESTDIR)$(libdir)/cmake/SDL2_ttf/sdl2_ttf-config.cmake
+	rm $(DESTDIR)$(libdir)/cmake/SDL2_ttf/sdl2_ttf-config-version.cmake
+	rm -r $(DESTDIR)$(libdir)/cmake/SDL2_ttf

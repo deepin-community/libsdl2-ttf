@@ -1,8 +1,130 @@
-libsdl2-ttf (2.0.18+dfsg-3) UNRELEASED; urgency=medium
+libsdl2-ttf (2.24.0+dfsg-2) unstable; urgency=medium
 
-  * update
+  [ Fabian Greffrath ]
+  * tests: switch from fonts-cantarell to fonts-freefont-otf
 
- -- Debian SDL packages maintainers <pkg-sdl-maintainers@lists.alioth.debian.org>  Thu, 19 May 2022 10:25:01 +0800
+ -- Simon McVittie <smcv@debian.org>  Tue, 25 Feb 2025 16:18:23 +0000
+
+libsdl2-ttf (2.24.0+dfsg-1) unstable; urgency=medium
+
+  * New upstream stable release
+  * d/copyright: Update
+  * d/control, d/tests: (Build-)Depend on pkgconf, which replaces pkg-config
+  * d/libsdl2-ttf-2.0-0.symbols: Update
+  * Standards-Version: 4.7.0 (no changes required)
+  * Install showfont and glfont examples in -dev package for manual testing
+  * d/salsa-ci.yml: Enable CI
+
+ -- Simon McVittie <smcv@debian.org>  Sat, 04 Jan 2025 17:08:16 +0000
+
+libsdl2-ttf (2.22.0+dfsg-1) unstable; urgency=medium
+
+  * New upstream stable release
+  * d/copyright: Update
+  * d/gbp.conf: Only sign packaging tags, not upstream tags
+  * d/gbp.conf: Rely on uscan to repack upstream source.
+    This will use Files-Excluded in d/copyright, rather than separate
+    configuration.
+  * d/gbp.conf: Use DEP-14 branch names
+
+ -- Simon McVittie <smcv@debian.org>  Mon, 22 Jan 2024 13:12:17 +0000
+
+libsdl2-ttf (2.20.2+dfsg-1) unstable; urgency=medium
+
+  [ Debian Janitor ]
+  * d/upstream/metadata: Add
+  * d/control: Remove version constraints unnecessary since Debian 10
+
+  [ Simon McVittie ]
+  * New upstream stable release
+    - Functionally equivalent to 2.20.1+dfsg for Debian's purposes
+  * d/copyright: Update
+  * d/control: Update standards version to 4.6.2 (no changes needed)
+  * d/control: Remove version constraints unnecessary since Debian 11
+  * d/upstream/metadata: Add Repository field
+  * d/tests: Run Xvfb with -noreset to make the test more reliable.
+    See #981201.
+  * d/tests: Instruct xvfb-run to choose a server number automatically
+  * d/watch: Only watch for 2.x versions.
+    The upstream 'main' branch now targets SDL 3 (under development), and
+    should be packaged separately as a libsdl3-ttf source package.
+
+ -- Simon McVittie <smcv@debian.org>  Sat, 15 Jul 2023 18:05:37 +0100
+
+libsdl2-ttf (2.20.1+dfsg-2) unstable; urgency=medium
+
+  * d/watch: Update for Github website changes
+
+ -- Simon McVittie <smcv@debian.org>  Fri, 28 Oct 2022 18:19:30 +0100
+
+libsdl2-ttf (2.20.1+dfsg-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Simon McVittie <smcv@debian.org>  Mon, 29 Aug 2022 21:05:35 +0100
+
+libsdl2-ttf (2.20.0+dfsg-1) unstable; urgency=medium
+
+  * New upstream release
+  * d/libsdl2-ttf-2.0-0.symbols: Use stable release for recent symbols.
+    We don't need to keep track of which specific prerelease introduced
+    each symbol now that they're in a stable release.
+  * d/watch: Only look for stable releases
+  * Standards-Version: 4.6.1 (no changes required)
+  * d/rules: Enable full compiler hardening
+  * Switch branch for upload to unstable
+
+ -- Simon McVittie <smcv@debian.org>  Sat, 09 Jul 2022 14:55:03 +0100
+
+libsdl2-ttf (2.19.2+dfsg-1) experimental; urgency=medium
+
+  * New upstream prerelease
+  * d/watch: Don't download Windows binaries, etc.
+  * d/watch: Accept development prereleases for experimental branch
+  * Add myself to Uploaders
+  * Drop all patches, applied upstream
+  * d/libsdl2-ttf-dev.install: Install the new CMake metadata
+  * d/tests: Exercise a CMake build
+
+ -- Simon McVittie <smcv@debian.org>  Fri, 17 Jun 2022 10:56:50 +0100
+
+libsdl2-ttf (2.19.1+dfsg-2) experimental; urgency=medium
+
+  * Team upload
+  * d/patches: Add post-release-candidate fixes from upstream.
+    In particular this fixes an autopkgtest regression for src:pysdl2.
+  * d/watch: Automatically add +dfsg suffix
+  * d/.gitignore: Add
+
+ -- Simon McVittie <smcv@debian.org>  Tue, 31 May 2022 13:16:45 +0100
+
+libsdl2-ttf (2.19.1+dfsg-1) experimental; urgency=medium
+
+  * Team upload
+  * New upstream prerelease
+  * d/watch: Download releases from Github
+  * d/copyright: Remove exclusion patterns that are no longer needed
+  * d/watch: Don't download prereleases (by default)
+
+ -- Simon McVittie <smcv@debian.org>  Wed, 25 May 2022 20:27:23 +0100
+
+libsdl2-ttf (2.0.18+git20220512.g21ae4c6+dfsg-1) experimental; urgency=medium
+
+  * Team upload
+  * New upstream git snapshot
+  * Update symbols file.
+    Ignore removal of TTF_SetFontScript, which only existed in experimental.
+
+ -- Simon McVittie <smcv@debian.org>  Fri, 13 May 2022 16:30:01 +0100
+
+libsdl2-ttf (2.0.18+git20220508.gaa0659b+dfsg-1) experimental; urgency=medium
+
+  * Team upload
+  * New upstream git snapshot
+    - Drop patches, applied upstream
+    - Update symbols file with new ABI from development branch
+
+ -- Simon McVittie <smcv@debian.org>  Mon, 09 May 2022 17:06:08 +0100
 
 libsdl2-ttf (2.0.18+dfsg-3) unstable; urgency=medium
 

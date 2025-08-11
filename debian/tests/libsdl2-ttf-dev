@@ -19,24 +19,35 @@ else
 fi
 
 cp showfont.c "$WORKDIR"
+mkdir "$WORKDIR/cmake"
+cp ./cmake/test/CMakeLists.txt "$WORKDIR/cmake"
+cp ./cmake/test/main.c "$WORKDIR/cmake"
 
 cd "$WORKDIR"
 
-# Deliberately word-splitting pkg-config's output:
+# Deliberately word-splitting pkgconf's output:
 # shellcheck disable=SC2046
-"${CROSS_COMPILE}gcc" -oshowfont showfont.c $("${CROSS_COMPILE}pkg-config" --cflags --libs SDL2_ttf)
+"${CROSS_COMPILE}gcc" -oshowfont showfont.c $("${CROSS_COMPILE}pkgconf" --cflags --libs SDL2_ttf)
 
 set -- ./showfont
 
 if [ -z "${TEST_INTERACTIVE-}" ]; then
 	echo "(export TEST_INTERACTIVE=1 for an interactive test)"
-	set -- xvfb-run -a "$@" -dump
+	set -- xvfb-run -a -s '-screen 0 1280x1024x24 -noreset' "$@" -dump
 fi
 
-set -- "$@" /usr/share/fonts/opentype/cantarell/Cantarell-Regular.otf
+set -- "$@" /usr/share/fonts/opentype/freefont/FreeMono.otf
 
 "$@"
 
 if [ -z "${TEST_INTERACTIVE-}" ]; then
 	file glyph-100.bmp
+fi
+
+if [ -z "${DEB_HOST_GNU_TYPE:-}" ]; then
+    mkdir cmake/_build
+    ( cd cmake/_build; cmake -GNinja -DTEST_SHARED=ON -DTEST_STATIC=ON .. )
+    ninja -C cmake/_build
+    ./cmake/_build/main_shared
+    ./cmake/_build/main_static
 fi
