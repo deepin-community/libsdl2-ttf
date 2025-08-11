@@ -6,7 +6,6 @@ Files-Excluded: Makefile.in
                 VisualC
                 VisualC-WinRT
                 Xcode
-                Xcode-iOS
                 acinclude/libtool.m4
                 acinclude/lt*.m4
                 aclocal.m4
@@ -14,7 +13,6 @@ Files-Excluded: Makefile.in
                 config.guess
                 config.sub
                 configure
-                debian
                 depcomp
                 external
                 install-sh
@@ -23,13 +21,14 @@ Files-Excluded: Makefile.in
 
 
 Files: *
-Copyright: 2001-2022 Sam Lantinga <slouken@libsdl.org>
+Copyright: 2001-2025 Sam Lantinga <slouken@libsdl.org>
 License: zlib/libpng
 
 
 Files: debian/*
 Copyright: 2012-2013, Manuel A. Fernandez Montecelo <mafm@debian.org>
-           2022 Collabora Ltd.
+           2024 Collabora Ltd.
+           2025 Simon McVittie
 License: zlib/libpng
 
 

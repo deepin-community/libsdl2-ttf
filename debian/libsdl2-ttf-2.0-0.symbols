@@ -18,6 +18,7 @@ libSDL2_ttf-2.0.so.0 libsdl2-ttf-2.0-0 #MINVER#
  TTF_GetFontOutline@Base 2.0.15
  TTF_GetFontSDF@Base 2.0.18
  TTF_GetFontStyle@Base 2.0.15
+ TTF_GetFontWrappedAlign@Base 2.20.0
  TTF_GetFreeTypeVersion@Base 2.0.18
  TTF_GetHarfBuzzVersion@Base 2.0.18
  TTF_GlyphIsProvided32@Base 2.0.18
@@ -39,37 +40,49 @@ libSDL2_ttf-2.0.so.0 libsdl2-ttf-2.0-0 #MINVER#
  TTF_OpenFontRW@Base 2.0.15
  TTF_Quit@Base 2.0.15
  TTF_RenderGlyph32_Blended@Base 2.0.18
+ TTF_RenderGlyph32_LCD@Base 2.20.0
  TTF_RenderGlyph32_Shaded@Base 2.0.18
  TTF_RenderGlyph32_Solid@Base 2.0.18
  TTF_RenderGlyph_Blended@Base 2.0.15
+ TTF_RenderGlyph_LCD@Base 2.20.0
  TTF_RenderGlyph_Shaded@Base 2.0.15
  TTF_RenderGlyph_Solid@Base 2.0.15
  TTF_RenderText_Blended@Base 2.0.15
  TTF_RenderText_Blended_Wrapped@Base 2.0.15
+ TTF_RenderText_LCD@Base 2.20.0
+ TTF_RenderText_LCD_Wrapped@Base 2.20.0
  TTF_RenderText_Shaded@Base 2.0.15
  TTF_RenderText_Shaded_Wrapped@Base 2.0.18
  TTF_RenderText_Solid@Base 2.0.15
  TTF_RenderText_Solid_Wrapped@Base 2.0.18
  TTF_RenderUNICODE_Blended@Base 2.0.15
  TTF_RenderUNICODE_Blended_Wrapped@Base 2.0.15
+ TTF_RenderUNICODE_LCD@Base 2.20.0
+ TTF_RenderUNICODE_LCD_Wrapped@Base 2.20.0
  TTF_RenderUNICODE_Shaded@Base 2.0.15
  TTF_RenderUNICODE_Shaded_Wrapped@Base 2.0.18
  TTF_RenderUNICODE_Solid@Base 2.0.15
  TTF_RenderUNICODE_Solid_Wrapped@Base 2.0.18
  TTF_RenderUTF8_Blended@Base 2.0.15
  TTF_RenderUTF8_Blended_Wrapped@Base 2.0.15
+ TTF_RenderUTF8_LCD@Base 2.20.0
+ TTF_RenderUTF8_LCD_Wrapped@Base 2.20.0
  TTF_RenderUTF8_Shaded@Base 2.0.15
  TTF_RenderUTF8_Shaded_Wrapped@Base 2.0.18
  TTF_RenderUTF8_Solid@Base 2.0.15
  TTF_RenderUTF8_Solid_Wrapped@Base 2.0.18
  TTF_SetDirection@Base 2.0.18
+ TTF_SetFontDirection@Base 2.20.0
  TTF_SetFontHinting@Base 2.0.15
  TTF_SetFontKerning@Base 2.0.15
+ TTF_SetFontLineSkip@Base 2.24.0
  TTF_SetFontOutline@Base 2.0.15
  TTF_SetFontSDF@Base 2.0.18
+ TTF_SetFontScriptName@Base 2.20.0
  TTF_SetFontSize@Base 2.0.18
  TTF_SetFontSizeDPI@Base 2.0.18
  TTF_SetFontStyle@Base 2.0.15
+ TTF_SetFontWrappedAlign@Base 2.20.0
  TTF_SetScript@Base 2.0.18
  TTF_SizeText@Base 2.0.15
  TTF_SizeUNICODE@Base 2.0.15

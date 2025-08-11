@@ -1,0 +1,23 @@
+From: Simon McVittie <smcv@debian.org>
+Date: Sat, 4 Jan 2025 16:55:02 +0000
+Subject: build: Install example programs for manual testing
+
+Forwarded: not-needed
+---
+ Makefile.am | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/Makefile.am b/Makefile.am
+index abaa70f..66982be 100644
+--- a/Makefile.am
++++ b/Makefile.am
+@@ -167,7 +167,8 @@ EXTRA_DIST = 			\
+ 	sdl2_ttf-config.cmake.in \
+ 	version.rc
+ 
+-noinst_PROGRAMS = showfont glfont
++insttestexecdir = $(libdir)/installed-tests/SDL2_ttf
++insttestexec_PROGRAMS = showfont glfont
+ 
+ showfont_LDADD = libSDL2_ttf.la
+ glfont_LDADD = libSDL2_ttf.la @GL_LIBS@ @MATHLIB@
